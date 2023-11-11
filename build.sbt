@@ -25,5 +25,19 @@ lazy val chapter02 = project
       )
     )
 
+lazy val chapter03 = project
+  .in(file("chapter03"))
+  .settings(
+    scalaVersion := ScalaVersion,
+    scalafmtOnCompile := true,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor" % AkkaVersion,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+      )
+    )
+
 
 ThisBuild / watchTriggeredMessage := Watch.clearScreenOnTrigger
