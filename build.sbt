@@ -99,4 +99,20 @@ lazy val chapter07 = project
       "org.scalatest" %% "scalatest" % ScalaTest % Test,
     ))
 
+lazy val chapter08a = project
+  .in(file("chapter08a"))
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion,
+      "com.lightbend.akka.management" %% "akka-management" % AkkaManagementVersion,
+      "com.lightbend.akka.management" %% "akka-management-cluster-http" % AkkaManagementVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+    ))
+
 ThisBuild / watchTriggeredMessage := Watch.clearScreenOnTrigger
