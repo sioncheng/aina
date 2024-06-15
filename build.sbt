@@ -133,4 +133,47 @@ lazy val chapter08b = project
     ),
   )
 
+lazy val chapter09a = project
+  .in(file("chapter09a"))
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-serialization-jackson" % AkkaVersion,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+      "com.lightbend.akka.management" %% "akka-management" % AkkaManagementVersion,
+      "com.lightbend.akka.management" %% "akka-management-cluster-http" % AkkaManagementVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+    )
+  )
+
+lazy val chapter09b = project
+  .in(file("chapter09b"))
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-serialization-jackson" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-persistence-testkit" % AkkaVersion % Test,
+      "com.lightbend.akka" %% "akka-persistence-jdbc" % "5.0.0",
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+      "com.lightbend.akka.management" %% "akka-management" % AkkaManagementVersion,
+      "com.lightbend.akka.management" %% "akka-management-cluster-http" % AkkaManagementVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+      //"org.postgresql" % "postgresql" % "42.2.18",
+      "mysql" % "mysql-connector-java" % "8.0.33",
+    )
+  )
+
 ThisBuild / watchTriggeredMessage := Watch.clearScreenOnTrigger
