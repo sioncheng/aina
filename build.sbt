@@ -176,4 +176,71 @@ lazy val chapter09b = project
     )
   )
 
+lazy val chapter10a = project
+  .in(file("chapter10a"))
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion  ,
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion, //otherwise java.lang.ClassNotFoundException: akka.cluster.ClusterActorRefProvider
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+    ))
+
+lazy val chapter10b = project
+  .in(file("chapter10b"))
+  .dependsOn(chapter09b)
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-persistence-query" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.lightbend.akka" %% "akka-persistence-jdbc" % "5.0.0",
+      //"org.postgresql" % "postgresql" % "42.2.18",
+      "mysql" % "mysql-connector-java" % "8.0.33",
+      "com.lightbend.akka" %% "akka-stream-alpakka-slick" % "2.0.0",
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+      "com.typesafe.akka" %% "akka-serialization-jackson" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+      "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test
+    )
+  )
+
+lazy val chapter10c = project
+  .in(file("chapter10c"))
+  .dependsOn(chapter09b)
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-serialization-jackson" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-persistence-testkit" % AkkaVersion % Test,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+      "com.lightbend.akka.management" %% "akka-management" % AkkaManagementVersion,
+      "com.lightbend.akka.management" %% "akka-management-cluster-http" % AkkaManagementVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding" % AkkaVersion,
+      "com.lightbend.akka" %% "akka-projection-core" % AkkaProjectionVersion,
+      "com.lightbend.akka" %% "akka-projection-eventsourced" % AkkaProjectionVersion,
+      "com.lightbend.akka" %% "akka-projection-jdbc" % AkkaProjectionVersion,
+      "com.lightbend.akka" %% "akka-projection-testkit" % AkkaProjectionVersion,
+      "com.typesafe.akka" %% "akka-persistence-query" % AkkaVersion,
+      "com.lightbend.akka" %% "akka-persistence-jdbc" % "5.0.0",
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion ,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+      "org.scalikejdbc" %% "scalikejdbc"       % ScalikeJdbcVersion,
+      "org.scalikejdbc" %% "scalikejdbc-config" % ScalikeJdbcVersion,
+      //"org.postgresql" % "postgresql" % "42.2.18",
+      "mysql" % "mysql-connector-java" % "8.0.33"
+    )
+  )
+
+
 ThisBuild / watchTriggeredMessage := Watch.clearScreenOnTrigger
