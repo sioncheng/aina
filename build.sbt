@@ -242,5 +242,19 @@ lazy val chapter10c = project
     )
   )
 
+lazy val chapter11a = project
+  .in(file("chapter11a"))
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
+      "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion
+    )
+  )
+
 
 ThisBuild / watchTriggeredMessage := Watch.clearScreenOnTrigger
