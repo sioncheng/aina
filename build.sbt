@@ -256,5 +256,66 @@ lazy val chapter11a = project
     )
   )
 
+lazy val chapter12 = project
+  .in(file("chapter12"))
+  .dependsOn(chapter09b)
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-serialization-jackson" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-persistence-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-persistence-testkit" % AkkaVersion % Test,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+      "com.lightbend.akka.management" %% "akka-management" % AkkaManagementVersion,
+      "com.lightbend.akka.management" %% "akka-management-cluster-http" % AkkaManagementVersion,
+      "com.typesafe.akka" %% "akka-cluster-sharding" % AkkaVersion,
+      "com.lightbend.akka" %% "akka-projection-core" % AkkaProjectionVersion,
+      "com.lightbend.akka" %% "akka-projection-eventsourced" % AkkaProjectionVersion,
+      "com.lightbend.akka" %% "akka-projection-jdbc" % AkkaProjectionVersion,
+      "com.lightbend.akka" %% "akka-projection-testkit" % AkkaProjectionVersion,
+      "com.typesafe.akka" %% "akka-persistence-query" % AkkaVersion,
+      "com.lightbend.akka" %% "akka-persistence-jdbc" % "5.0.0",
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion ,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+      "org.scalikejdbc" %% "scalikejdbc"       % ScalikeJdbcVersion,
+      "org.scalikejdbc" %% "scalikejdbc-config" % ScalikeJdbcVersion,
+      //"org.postgresql" % "postgresql" % "42.2.18",
+      "mysql" % "mysql-connector-java" % "8.0.33"
+    )
+  )
+
+lazy val chapter13a = project
+  .in(file("chapter13a"))
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster" % AkkaVersion,
+      "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % AkkaManagementVersion,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+    )
+  )
+
+lazy val chapter13b = project
+  .in(file("chapter13b"))
+  .settings(
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-cluster-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-discovery" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-cluster" % AkkaVersion,
+      "com.lightbend.akka.management" %% "akka-management-cluster-http" % AkkaManagementVersion,
+      "com.lightbend.akka.discovery" %% "akka-discovery-kubernetes-api" % AkkaManagementVersion,
+      "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % AkkaManagementVersion,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+    )
+  )
 
 ThisBuild / watchTriggeredMessage := Watch.clearScreenOnTrigger
