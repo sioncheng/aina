@@ -318,4 +318,24 @@ lazy val chapter13b = project
     )
   )
 
+lazy val chapter14 = project
+  .in(file("chapter14"))
+  .settings(
+    scalafmtOnCompile := true,
+    scalaVersion := ScalaVersion,
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-stream-typed" % AkkaVersion,
+      "com.lightbend.akka" %% "akka-stream-alpakka-csv" % AkkaStreamAlpakka,
+      "com.lightbend.akka" %% "akka-stream-alpakka-file" % AkkaStreamAlpakka,
+      "com.lightbend.akka" %% "akka-stream-alpakka-s3" % AkkaStreamAlpakka,
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,//
+      "com.typesafe.akka" %% "akka-http-xml" % AkkaHttpVersion,// this is for solving dependency version mismatches
+      "com.typesafe.akka" %% "akka-stream-kafka" % AkkaStreamKafka,
+      "com.fasterxml.jackson.core" % "jackson-databind" % JacksonVersion,
+      "ch.qos.logback" % "logback-classic" % LogbackVersion,
+      "org.scalatest" %% "scalatest" % ScalaTest % Test,
+    ))
+
 ThisBuild / watchTriggeredMessage := Watch.clearScreenOnTrigger
